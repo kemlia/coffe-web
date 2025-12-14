@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOPIAR — Coffee Roastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'system-ui']
+          },
+          colors: {
+            coffee: '#3b2a24',
+            latte: '#f5efe9'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-latte text-neutral-900 font-sans">
+
+<!-- Announcement -->
+<div class="bg-coffee text-white text-sm text-center py-2">☕ Fresh Roast Every Week • Order via WhatsApp</div>
+
+<!-- Navbar -->
+<nav class="sticky top-0 bg-white/80 backdrop-blur z-50 border-b">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="text-2xl font-black tracking-tight">KOPIAR</h1>
+    <ul class="hidden md:flex gap-10 text-sm font-semibold">
+      <li class="hover:opacity-70">Home</li>
+      <li class="hover:opacity-70">Beans</li>
+      <li class="hover:opacity-70">Brew Guide</li>
+      <li class="hover:opacity-70">About</li>
+    </ul>
+    <button id="cartBtn" class="relative border px-4 py-2 rounded-full text-sm">
+      Cart <span id="cartCount" class="ml-1">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="relative h-[90vh] flex items-center">
+  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative max-w-7xl mx-auto px-6 text-white">
+    <p class="uppercase tracking-widest text-sm mb-4">Specialty Coffee</p>
+    <h2 class="font-serif text-7xl font-bold max-w-3xl">Brew Better<br>Every Morning</h2>
+    <p class="mt-6 max-w-xl text-neutral-200">Single origin & house blend, dipanggang segar dan siap dikirim.</p>
+    <div class="mt-10 flex gap-4">
+      <button class="bg-white text-black px-8 py-3 rounded-full font-semibold">Shop Beans</button>
+      <button class="border border-white px-8 py-3 rounded-full font-semibold">Brew Guide</button>
+    </div>
+  </div>
+</section>
+
+<!-- Feature Strip -->
+<section class="bg-white py-14">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+    <div><h4 class="font-bold">Fresh Roast</h4><p class="text-sm text-neutral-600">Roasted weekly</p></div>
+    <div><h4 class="font-bold">Single Origin</h4><p class="text-sm text-neutral-600">Traceable beans</p></div>
+    <div><h4 class="font-bold">Brew Guide</h4><p class="text-sm text-neutral-600">Manual & video</p></div>
+    <div><h4 class="font-bold">Fast Shipping</h4><p class="text-sm text-neutral-600">Nationwide</p></div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-end mb-12">
+      <h3 class="text-4xl font-bold">Coffee Beans</h3>
+      <select class="border rounded-full px-4 py-2 text-sm">
+        <option>Sort by</option>
+        <option>Price</option>
+        <option>Best Seller</option>
+      </select>
+    </div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div class="bg-white rounded-3xl p-5 shadow hover:shadow-xl transition">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" class="rounded-2xl" />
+        <h4 class="mt-5 font-semibold text-lg">Arabica Gayo</h4>
+        <p class="text-sm text-neutral-500">Nutty • Chocolate</p>
+        <select class="mt-3 w-full border rounded px-3 py-2 text-sm">
+          <option value="85000">250g — Rp 85.000</option>
+          <option value="155000">500g — Rp 155.000</option>
+        </select>
+        <button onclick="addToCart('Arabica Gayo', this.previousElementSibling.value)" class="mt-4 w-full bg-coffee text-white py-2 rounded-full">Add to Cart</button>
+      </div>
+
+      <div class="bg-white rounded-3xl p-5 shadow hover:shadow-xl transition">
+        <img src="https://images.unsplash.com/photo-1509785307050-d4066910ec1e" class="rounded-2xl" />
+        <h4 class="mt-5 font-semibold text-lg">Robusta Lampung</h4>
+        <p class="text-sm text-neutral-500">Bold • Earthy</p>
+        <select class="mt-3 w-full border rounded px-3 py-2 text-sm">
+          <option value="65000">250g — Rp 65.000</option>
+          <option value="120000">500g — Rp 120.000</option>
+        </select>
+        <button onclick="addToCart('Robusta Lampung', this.previousElementSibling.value)" class="mt-4 w-full bg-coffee text-white py-2 rounded-full">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Brew Guide -->
+<section class="bg-white py-24">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <img src="https://images.unsplash.com/photo-1521302080371-1e8c1b5a5c6b" class="rounded-3xl" />
+    <div>
+      <h3 class="text-4xl font-bold mb-6">Brew Guide</h3>
+      <p class="text-neutral-600 mb-8">Panduan seduh V60, French Press, dan Espresso untuk hasil maksimal.</p>
+      <button class="bg-coffee text-white px-8 py-3 rounded-full">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<!-- Cart Modal -->
+<div id="cartModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center">
+  <div class="bg-white rounded-3xl p-6 w-full max-w-md">
+    <h3 class="text-xl font-bold mb-4">Your Cart</h3>
+    <ul id="cartItems" class="space-y-2 text-sm"></ul>
+    <div class="mt-4 flex justify-between font-bold">
+      <span>Total</span><span id="cartTotal">Rp 0</span>
+    </div>
+    <div class="mt-6 flex gap-3">
+      <button onclick="checkoutWA()" class="flex-1 bg-green-600 text-white py-2 rounded-full">WhatsApp Order</button>
+      <button onclick="toggleCart()" class="flex-1 border py-2 rounded-full">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-coffee text-neutral-300">
+  <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-4 gap-10">
+    <div>
+      <h4 class="text-white font-bold text-xl">KOPIAR</h4>
+      <p class="mt-4 text-sm">Specialty coffee roastery Indonesia.</p>
+    </div>
+    <div><h5 class="text-white mb-3">Shop</h5><ul class="text-sm space-y-2"><li>Beans</li><li>Brew Tools</li></ul></div>
+    <div><h5 class="text-white mb-3">Learn</h5><ul class="text-sm space-y-2"><li>Brew Guide</li><li>Blog</li></ul></div>
+    <div><h5 class="text-white mb-3">Support</h5><ul class="text-sm space-y-2"><li>Contact</li><li>Shipping</li></ul></div>
+  </div>
+  <p class="text-center text-xs py-6 border-t border-white/10">© 2025 KOPIAR</p>
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function addToCart(name, price) {
+  cart.push({ name, price: Number(price) });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById('cartCount').innerText = cart.length;
+  const list = document.getElementById('cartItems');
+  const total = document.getElementById('cartTotal');
+  list.innerHTML = '';
+  let sum = 0;
+  cart.forEach(item => {
+    sum += item.price;
+    list.innerHTML += `<li>${item.name} — Rp ${item.price.toLocaleString('id-ID')}</li>`;
+  });
+  total.innerText = 'Rp ' + sum.toLocaleString('id-ID');
+}
+
+function toggleCart() {
+  document.getElementById('cartModal').classList.toggle('hidden');
+}
+
+function checkoutWA() {
+  let text = 'Halo, saya mau pesan:%0A';
+  cart.forEach(i => text += `- ${i.name} Rp ${i.price.toLocaleString('id-ID')}%0A`);
+  window.open(`https://wa.me/6281234567890?text=${text}`);
+}
+
+cartBtn.onclick = toggleCart;
+updateCart();
+</script>
+
+</body>
+</html>
